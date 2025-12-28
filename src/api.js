@@ -10,13 +10,13 @@ import {
 } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  databaseURL: import.meta.env.VITE_FIREBASE_DB_URL,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyD9rSq5UZGBtB2o-h7R_VwseH6ih1oG-X0",
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "asdf-770ae.firebaseapp.com",
+  databaseURL: import.meta.env.VITE_FIREBASE_DB_URL || "https://asdf-770ae-default-rtdb.firebaseio.com",
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "asdf-770ae",
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "asdf-770ae.firebasestorage.app",
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "232399308126",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:232399308126:web:1618eb6e474b8eac083bcf",
 };
 
 const app = initializeApp(firebaseConfig);
