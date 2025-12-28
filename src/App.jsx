@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { fetchDay, sendEvent, subscribeState } from "./api";
+import { fetchDay, sendEvent, subscribeState, clearEvents } from "./api";
 import "./styles.css";
 
 const CANVAS_BG = "#fffaf3";
@@ -224,6 +224,29 @@ function App() {
     }
   };
 
+  const handleClear = async () => {
+    if (!canDraw) return;
+    if (!window.confirm("Tüm çizimleri silmek istediğinden emin misin?")) {
+      return;
+    }
+    try {
+      await clearEvents();
+      setEvents([]);
+      const canvas = canvasRef.current;
+      if (canvas) {
+        const ctx = canvas.getContext("2d");
+        const displayWidth = canvas._displayWidth || canvas.width;
+        const displayHeight = canvas._displayHeight || canvas.height;
+        ctx.clearRect(0, 0, displayWidth, displayHeight);
+        ctx.fillStyle = CANVAS_BG;
+        ctx.fillRect(0, 0, displayWidth, displayHeight);
+      }
+      setError("");
+    } catch (err) {
+      setError(err.message || "Silinemedi");
+    }
+  };
+
   if (showLanding) {
     return <LandingScreen onEnter={() => setShowLanding(false)} />;
   }
@@ -231,9 +254,18 @@ function App() {
   return (
     <div className="app">
       <div className="header">
-        <div className="header-title">Minnoşum Berfin 💖</div>
-        <div className="header-day">Gün {day || "—"}</div>
-        {!canDraw && <div className="view-badge">Sadece Görüntüleme</div>}
+        <div className="header-left">
+          <div className="header-title">Minnoşum Berfin 💖</div>
+          <div className="header-day">Gün {day || "—"}</div>
+        </div>
+        <div className="header-right">
+          {canDraw && (
+            <button className="clear-button" onClick={handleClear} title="Tümünü Sil">
+              🗑️ Sil
+            </button>
+          )}
+          {!canDraw && <div className="view-badge">Sadece Görüntüleme</div>}
+        </div>
       </div>
 
       <div className="canvas-container">

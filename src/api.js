@@ -68,3 +68,10 @@ export async function fetchDay() {
   return { day: key };
 }
 
+export async function clearEvents() {
+  const key = dayKey();
+  const path = ref(db, `events/${key}`);
+  await set(path, null);
+  return { day: key };
+}
+

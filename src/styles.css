@@ -142,6 +142,19 @@ body {
   gap: 12px;
 }
 
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .header-title {
   font-size: 22px;
   font-weight: 700;
@@ -163,6 +176,31 @@ body {
   padding: 6px 12px;
   border-radius: 12px;
   border: 1px solid rgba(255, 111, 153, 0.3);
+}
+
+.clear-button {
+  font-size: 14px;
+  color: #be123c;
+  background: rgba(255, 227, 241, 0.9);
+  border: 1px solid rgba(255, 111, 153, 0.4);
+  padding: 8px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.clear-button:hover {
+  background: rgba(255, 200, 220, 1);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(255, 111, 153, 0.2);
+}
+
+.clear-button:active {
+  transform: translateY(0);
 }
 
 .canvas-container {
